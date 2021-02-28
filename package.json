@@ -1,0 +1,28 @@
+{
+  "name": "xtensio-chat",
+  "version": "1.0.0",
+  "description": "Xtensio Coding Challenge chat app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olivercastroteran/xtensio-chat.git"
+  },
+  "author": "Oliver Castro Teran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/olivercastroteran/xtensio-chat/issues"
+  },
+  "homepage": "https://github.com/olivercastroteran/xtensio-chat#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "soket.io": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

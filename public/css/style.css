@@ -131,6 +131,7 @@ a {
 }
 
 .chat-form-container input[type='text'] {
+  outline: none;
   font-size: 16px;
   padding: 5px;
   height: 40px;

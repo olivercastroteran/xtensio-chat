@@ -50,6 +50,16 @@ a {
   color: var(--dark-color-a);
   border: 0;
   font-size: 17px;
+  transition: all 0.25s;
+}
+
+.btn:hover {
+  color: var(--dark-color-a);
+  background: #fff;
+}
+
+.btn:active {
+  transform: scale(0.95);
 }
 
 /* Chat Page */
@@ -69,6 +79,31 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.chat-rename input {
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  padding: 3px;
+  margin-right: 0.5rem;
+}
+
+.chat-rename button {
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  transition: all 0.25s;
+}
+
+.chat-rename button:hover {
+  background: #fff;
+  color: var(--dark-color-a);
 }
 
 .chat-main {

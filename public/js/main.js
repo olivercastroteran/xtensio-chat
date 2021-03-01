@@ -2,6 +2,8 @@ const chatForm = document.getElementById('chat-form');
 const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const usersList = document.getElementById('users');
+const renameBtn = document.getElementById('rename-btn');
+const newName = document.getElementById('rename');
 
 // Get username and room from url
 const { username, room } = Qs.parse(location.search, {
@@ -68,4 +70,12 @@ chatForm.addEventListener('submit', (e) => {
   // Clear input field
   e.target.elements.msg.value = '';
   e.target.elements.msg.focus();
+});
+
+renameBtn.addEventListener('click', (e) => {
+  const rename = newName.value;
+
+  console.log(rename);
+
+  socket.emit('changeName', { rename, room });
 });

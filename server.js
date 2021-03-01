@@ -8,6 +8,7 @@ const {
   getCurrentUser,
   userLeave,
   getRoomUsers,
+  changeName,
 } = require('./utils/users');
 
 const app = express();
@@ -66,6 +67,30 @@ io.on('connection', (socket) => {
         users: getRoomUsers(user.room),
       });
     }
+  });
+
+  // Change Name
+  socket.on('changeName', ({ rename, room }) => {
+    const user = changeName(socket.id, rename, room);
+    //console.log(user);
+    socket.join(user.room);
+
+    // Welcome current user
+    socket.emit(
+      'message',
+      formatMsg(botName, `${user.username} changed its name`)
+    );
+
+    // Broadcast when a user connects
+    socket.broadcast
+      .to(user.room)
+      .emit('message', formatMsg(botName, `${user.username} changed its name`));
+
+    // Send users and room info
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users: getRoomUsers(user.room),
+    });
   });
 });
 

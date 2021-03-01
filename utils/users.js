@@ -28,9 +28,22 @@ function getRoomUsers(room) {
   return users.filter((user) => user.room === room);
 }
 
+// Change Name
+function changeName(id, newName, room) {
+  const index = users.findIndex((user) => user.id === id);
+  users[index] = {
+    ...users[index],
+    username: newName,
+  };
+  //console.log(users[index]);
+
+  return users[index];
+}
+
 module.exports = {
   userJoin,
   getCurrentUser,
   userLeave,
   getRoomUsers,
+  changeName,
 };

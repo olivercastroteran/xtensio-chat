@@ -4,6 +4,7 @@ const roomName = document.getElementById('room-name');
 const usersList = document.getElementById('users');
 const renameBtn = document.getElementById('rename-btn');
 const newName = document.getElementById('rename');
+const msgBox = document.getElementById('msg');
 
 // Get username and room from url
 const { username, room } = Qs.parse(location.search, {
@@ -75,7 +76,9 @@ chatForm.addEventListener('submit', (e) => {
 renameBtn.addEventListener('click', (e) => {
   const rename = newName.value;
 
-  console.log(rename);
-
   socket.emit('changeName', { rename, room });
+});
+
+msgBox.addEventListener('focus', (e) => {
+  socket.emit('typing', { username, room });
 });

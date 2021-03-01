@@ -75,13 +75,13 @@ io.on('connection', (socket) => {
     //console.log(user);
     socket.join(user.room);
 
-    // Welcome current user
+    // telll new name
     socket.emit(
       'message',
       formatMsg(botName, `${user.username} changed its name`)
     );
 
-    // Broadcast when a user connects
+    // Broadcast when a user changed its name
     socket.broadcast
       .to(user.room)
       .emit('message', formatMsg(botName, `${user.username} changed its name`));
@@ -91,6 +91,19 @@ io.on('connection', (socket) => {
       room: user.room,
       users: getRoomUsers(user.room),
     });
+  });
+
+  // Tell if user is typing
+  socket.on('typing', ({ username, room }) => {
+    socket.join(room);
+
+    // Welcome current user
+    socket.emit('message', formatMsg(botName, `${username} is typing`));
+
+    // Broadcast when a user connects
+    socket.broadcast
+      .to(room)
+      .emit('message', formatMsg(botName, `${username} is typing`));
   });
 });
 
